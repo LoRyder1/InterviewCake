@@ -280,3 +280,7 @@ def is_single_riffle half1, half2, shuffled_deck
   
 end
 
+# Complexity: O(n) time and O(1) additional space
+
+# 37. Simulate a 5 sided die
+
