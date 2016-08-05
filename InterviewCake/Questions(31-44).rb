@@ -305,4 +305,28 @@ end
 
 # The call stack is what a program uses to keep track of what function it's currently  running and what to do with that function's return value.
 
-# Whenever you call a function, a new frame gets pushed onto the call stack, which is popped off when the function returns. As functions call other functions, the stack gets taller. In recursive functions, the stack can get as tall as the number of times the function calls itself. This can cause a problem: the stack has a limited amount of space, and if it gets too big yo ucan get a stack overflow error
+# Whenever you call a function, a new frame gets pushed onto the call stack, which is popped off when the function returns. As functions call other functions, the stack gets taller. In recursive functions, the stack can get as tall as the number of times the function calls itself. This can cause a problem: the stack has a limited amount of space, and if it gets too big you can get a stack overflow error
+
+def rand7
+
+  while true
+
+    # do our die rolls
+    roll1 = rand5
+    roll2 = rand5
+
+    outcome_number = (roll1-1) * 5 + (roll2-1) + 1
+
+    # if we hit an extraneous
+    # outcome we just re-roll
+    if outcome_number > 21
+      next
+    end
+
+    # out outcome was fine. return it!
+    return outcome_number % 7 + 1
+  end
+
+end
+
+# Worst-case O(infinity) time ( we might keep re-rolling forever) and O(1) space
