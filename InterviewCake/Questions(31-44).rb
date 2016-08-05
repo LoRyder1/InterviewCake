@@ -284,3 +284,25 @@ end
 
 # 37. Simulate a 5 sided die
 
+def rand5
+  result = 7
+  while result > 5
+    result = rand7
+  end
+  return result
+end
+
+def rand5_recursive
+  roll = rand7
+  if roll <= 5
+    return roll 
+  else 
+    return rand5_recursive
+  end
+end
+
+# some compilers and interpreters will do what's called "tail call optimization" (TCO), where it can optimize some recursive funcitons to avoid building up a tall call stack. Python and Java decidedly do not use TCO. Some Ruby implementations do, but most don't. Scheme is one of the few languages that guarantee TCO in all implementations. In general, best not to assume your compiler/interpreter will do this work for you. 
+
+# The call stack is what a program uses to keep track of what function it's currently  running and what to do with that function's return value.
+
+# Whenever you call a function, a new frame gets pushed onto the call stack, which is popped off when the function returns. As functions call other functions, the stack gets taller. In recursive functions, the stack can get as tall as the number of times the function calls itself. This can cause a problem: the stack has a limited amount of space, and if it gets too big yo ucan get a stack overflow error
