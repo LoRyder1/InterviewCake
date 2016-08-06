@@ -334,11 +334,18 @@ end
 # 39. Two Egg problem
 
 # the highest floor an egg won't break from 
-13
-floors we drop first egg from
-14
-floors we drop second egg from
-1,2,3,4,5,6,7,8,9,10,11,12,13
-total number of drops
-14
-
+# 13
+# floors we drop first egg from
+# 14
+# floors we drop second egg from
+# 1,2,3,4,5,6,7,8,9,10,11,12,13
+# total number of drops
+# 14
+# highest floor an egg won't break from
+# 98
+# floors we drop first egg from
+# 14,27,39,50,69,77,84,90,95,99
+# floors we drop second egg from
+# 96,97,98
+# total number of drops
+# 14
