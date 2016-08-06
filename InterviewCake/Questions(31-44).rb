@@ -330,3 +330,15 @@ def rand7
 end
 
 # Worst-case O(infinity) time ( we might keep re-rolling forever) and O(1) space
+
+# 39. Two Egg problem
+
+# the highest floor an egg won't break from 
+13
+floors we drop first egg from
+14
+floors we drop second egg from
+1,2,3,4,5,6,7,8,9,10,11,12,13
+total number of drops
+14
+
