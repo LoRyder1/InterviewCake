@@ -349,3 +349,86 @@ end
 # 96,97,98
 # total number of drops
 # 14
+
+# 40. Find Repeat, Space Edition
+
+# Write a function which finds any integer that appears more than once in our array. 
+
+require 'set'
+
+def find_repeat(numbers)
+  numbers_seen = Set.new
+  numbers.each do |number|
+    if numbers_seen.include? number
+      return number
+    else
+      numbers_seen.add(number)
+    end
+  end
+
+  # whoops -- no duplicate
+  raise Exception, 'no duplicate!'
+end
+
+# O(n) time and O(n) space
+
+def find_repeat_brute_force numbers
+  (1...numbers.length).each do |needle|
+    has_been_seen = false
+    numbers.each do |number|
+      if number == needle
+        has_been_seen ? return number : has_been_seen = true
+      end
+    end
+  end
+  
+  # whoops--no duplicate
+  raise Exception, 'no duplicate!'
+end
+
+# O(1) space, and O(n^2) time
+
+def find_repeat the_array
+  floor = 1
+  ceiling = the_array.length - 1
+
+  while floor < ceiling
+
+    # divide our range 1..n into an upper range and lower range
+    # (such that they don't overlap)
+    # lower range is floor..midpoint
+    # upper range is midpoint+1..ceiling
+    midpoint = floor + ((ceiling - floor) / 2)
+    lower_range_floor, lower_range_ceiling = floor, midpoint
+    upper_range_floor, upper_range_ceiling = midpoint+1, ceiling
+
+    # count number of items in lower range
+    items_in_lower_range = 0
+    the_array.each do |item|
+      # is it in the lower range?
+      if item >= lower_range_floor and item <= lower_range_ceiling
+        items_in_lower_range +=1
+      end
+    end
+
+    distinct_possible_integers_in_lower_range = \
+      lower_range_ceiling - lower_range_floor + 1
+
+    if items_in_lower_range > distinct_possible_integers_in_lower_range
+      # there must be a duplicate in the lower range
+      # so use the same approach iteratively on that range
+      floor, ceiling = lower_range_floor, lower_range_ceiling
+    else
+      # there must be a duplicate in the upper range
+      # so use the same approach iteratively on that range
+      floor, ceiling = upper_range_floor, upper_range_ceiling
+    end
+  end
+
+  # floor and ceiling have converged
+  # we found a number that repeats!
+  return floor
+
+end
+
+# Complexity: O(1) space adn O(nlgn) time 
