@@ -625,3 +625,13 @@ def merge_arrays my_array, alices_array
 end
 
 # Complexity: O(n) time and O(n) additional space
+
+# 44. Design a URL shortener
+
+<<-HEREDOC
+1. We should be able to store a lot of links, since we're not automatically expiring them.
+2. our shortlinks should be as short as possible. The whole point of a link shortener is to make short links! Having shorter links than our competition could be a business advantage. 
+3. Following a shortlink should be fast
+4. The shortlink follower should be resilient to load spikes. One of our lnks might be the top story on Reddit, for example. 
+
+HEREDOC
